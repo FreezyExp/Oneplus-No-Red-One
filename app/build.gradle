@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace = "com.upbad.apps.opgo"
 
-    compileSdkVersion 31
+    compileSdkVersion 34
     defaultConfig {
         applicationId "com.upbad.apps.opgo"
         //noinspection ExpiredTargetSdkVersion
         minSdkVersion 21
         //noinspection OldTargetApi
-        targetSdkVersion 31
+        targetSdkVersion 34
         versionCode 3
         versionName "3.0"
     }
