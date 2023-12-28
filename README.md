@@ -16,11 +16,29 @@ For those desired, there are two functions in the package `com.oneplus.deskclock
 ## Limited tests done on Android 14
 As I do not have AOD enabled, I also did not test if my fixes apply to all the AOD clocks as well
 
+## How to Update
+adb shell pm list package -f > apps.txt
+
+find systemui and uiengine
+
+- package:/system_ext/priv-app/SystemUI/SystemUI.apk=com.android.systemui
+- package:/product/app/VariUIEngine/VariUIEngine.apk=com.oplus.uiengine
+
+adb pull /system_ext/priv-app/SystemUI/SystemUI.apk
+adb pull /product/app/VariUIEngine/VariUIEngine.apk
+
+decompile and check the code
+
+find usages of R.color.red_clock_hour_color, or search for RedOne, etc.
+
+Create a new version and update Main to call that class.
+Add the updated function targeting to replace / inject the final state.
+
+Be careful not to make any mistakes in dealing with the parameters or the return type or your device might get bricked.
+
 ## Note on XPosed Resource Replacement
 I tried first to use XPosed Resource Replacement to set the red clock color to white, but that did not seem to work.
 As this was referenced in all functions related to the Red-One it seemed like a clean fix.
-
-
 
 ```
     @Override
